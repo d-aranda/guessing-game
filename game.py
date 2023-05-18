@@ -12,15 +12,19 @@ def guessinggame():
     guess = 0
     tries = 0
     while randomnum != guess:
-        guess = int(input("Guess a number between 1 and 100: "))
-        tries = tries + 1 
-        if guess < randomnum:
-            print("Guess too low")
-        elif guess > randomnum:
-            print("Guess too high")
-        else: 
-            print(f"Congrats, you got it in {tries} tries!")
-        
+        try:
+            guess = int(input("Guess a number between 1 and 100: "))
+            if guess not in range(1,101):
+                print("Guess not in range.")
+            elif guess < randomnum:
+                print("Guess too low")
+            elif guess > randomnum:
+                print("Guess too high")
+            tries = tries + 1
+        except:
+            print("Please enter a valid integer.")
+    print(f"Congrats {name}, you got it in {tries} tries!")
+    return tries
         
     
 guessinggame()
